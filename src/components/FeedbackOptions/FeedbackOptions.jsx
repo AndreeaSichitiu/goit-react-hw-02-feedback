@@ -6,22 +6,24 @@ import PropTypes from 'prop-types';
 export default function FeedbackOptions({ options, onLeaveFeedback }) {
   return (
     <div className={style.buttonContainer}>
-      {Object.keys(options).map(option => (
-        <button
-        key={option}
-        type="button"
-        name={option}
-        onClick={onLeaveFeedback}
-        className={style.feedbackButton}
-        >
-          {option}
-        </button>
-      ))}
+      {options.map(option => {
+        return (
+          <button
+            key={option}
+            type="button"
+            name={option}
+            onClick={onLeaveFeedback}
+            className={style.feedbackButton}
+          >
+            {option}
+          </button>
+        );
+      })}
     </div>
   );
 }
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.object.isRequired,
+  options: PropTypes.array.isRequired,
   onLeaveFeedback: PropTypes.func.isRequired,
-}
+};
